@@ -20,6 +20,7 @@ public class Tweet {
     private String createdAt;
     private User user;
     private String imageMediaUrl;
+    private long id;
 
     // used by parceler
     public Tweet() {}
@@ -29,6 +30,7 @@ public class Tweet {
         tweet.body = jsonObject.getString("text");
         tweet.createdAt = jsonObject.getString("created_at");
         tweet.user = User.fromJson(jsonObject.getJSONObject("user"));
+        tweet.id = jsonObject.getLong("id");
 
         if(jsonObject.getJSONObject("entities").has("media")) {
             tweet.imageMediaUrl = jsonObject.getJSONObject("entities").getJSONArray("media").getJSONObject(0).getString("media_url_https");
@@ -61,19 +63,15 @@ public class Tweet {
         return relativeDate;
     }
 
-    public String getBody() {
-        return body;
-    }
+    public String getBody() { return body; }
 
-    public String getCreatedAt() {
-        return createdAt;
-    }
+    public String getCreatedAt() { return createdAt; }
 
-    public User getUser() {
-        return user;
-    }
+    public User getUser() { return user; }
 
     public String getImageMediaUrl() { return imageMediaUrl; }
+
+    public long getId() { return id; }
 
     public boolean hasImage() { return imageMediaUrl != null; }
 }
