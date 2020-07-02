@@ -2,6 +2,12 @@ package com.codepath.apps.restclienttemplate.models;
 
 import android.text.format.DateUtils;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -14,13 +20,24 @@ import java.util.List;
 import java.util.Locale;
 
 @Parcel
+@Entity(foreignKeys = @ForeignKey(entity=User.class, parentColumns="id", childColumns="userId"))
 public class Tweet {
 
-    private String body;
-    private String createdAt;
-    private User user;
-    private String imageMediaUrl;
+    @ColumnInfo
+    @PrimaryKey
     private long id;
+    @ColumnInfo
+    private String body;
+    @ColumnInfo
+    private String createdAt;
+    @ColumnInfo
+    private String imageMediaUrl;
+
+    @ColumnInfo
+    private long userId;
+
+    @Ignore
+    private User user;
 
     // used by parceler
     public Tweet() {}
@@ -30,6 +47,7 @@ public class Tweet {
         tweet.body = jsonObject.getString("text");
         tweet.createdAt = jsonObject.getString("created_at");
         tweet.user = User.fromJson(jsonObject.getJSONObject("user"));
+        tweet.userId = tweet.getUser().getId();
         tweet.id = jsonObject.getLong("id");
 
         if(jsonObject.getJSONObject("entities").has("media")) {
@@ -72,6 +90,32 @@ public class Tweet {
     public String getImageMediaUrl() { return imageMediaUrl; }
 
     public long getId() { return id; }
+
+    public long getUserId() { return userId; }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public void setImageMediaUrl(String imageMediaUrl) {
+        this.imageMediaUrl = imageMediaUrl;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public boolean hasImage() { return imageMediaUrl != null; }
 }

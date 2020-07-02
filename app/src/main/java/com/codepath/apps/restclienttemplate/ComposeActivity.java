@@ -43,6 +43,8 @@ public class ComposeActivity extends AppCompatActivity {
         etCompose = binding.etCompose;
         btnTweet = binding.btnTweet;
 
+        // Set text listener
+
         // Set click listener
         btnTweet.setOnClickListener(new View.OnClickListener() {
             @Override
