@@ -17,7 +17,7 @@ The following **required** functionality is completed:
   * [X] User can then enter a new tweet and post this to twitter
   * [X] User is taken back to home timeline with **new tweet visible** in timeline
   * [X] Newly created tweet should be manually inserted into the timeline and not rely on a full refresh
-* [ ] User can **see a counter with total number of characters left for tweet** on compose tweet page
+* [X] User can **see a counter with total number of characters left for tweet** on compose tweet page
 * [X] User can **pull down to refresh tweets timeline**
 * [X] User can **see embedded image media within a tweet** on list or detail view.
 
@@ -36,7 +36,7 @@ The following **stretch** features are implemented:
 * [ ] User can view following / followers list through any profile they view.
 * [X] Use the View Binding library to reduce view boilerplate.
 * [ ] On the Twitter timeline, leverage the [CoordinatorLayout](http://guides.codepath.org/android/Handling-Scrolls-with-CoordinatorLayout#responding-to-scroll-events) to apply scrolling behavior that [hides / shows the toolbar](http://guides.codepath.org/android/Using-the-App-ToolBar#reacting-to-scroll).
-* [ ] User can **open the twitter app offline and see last loaded tweets**. Persisted in SQLite tweets are refreshed on every application launch. While "live data" is displayed when app can get it from Twitter API, it is also saved for use in offline mode.
+* [X] User can **open the twitter app offline and see last loaded tweets**. Persisted in SQLite tweets are refreshed on every application launch. While "live data" is displayed when app can get it from Twitter API, it is also saved for use in offline mode.
 
 The following **additional** features are implemented:
 
